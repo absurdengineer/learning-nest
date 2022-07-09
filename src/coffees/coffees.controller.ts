@@ -6,13 +6,14 @@ import {
   HttpStatus,
   Param,
   Post,
+  Res,
 } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
   @Get()
-  findAll(): string {
-    return 'This Action returns all the coffees.';
+  findAll(@Res() response) {
+    response.status(200).send('This Action returns all the coffees.');
   }
   @Get(':id')
   findOne(@Param('id') id: string): string {
