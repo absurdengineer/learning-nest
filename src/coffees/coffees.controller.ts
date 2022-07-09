@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -32,5 +33,10 @@ export class CoffeesController {
   update(@Param('id') id: string, @Body() body) {
     console.log(body);
     return `This Action update #${id} coffee`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `This Action removes #${id} coffee`;
   }
 }
