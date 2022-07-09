@@ -11,8 +11,8 @@ export class CoffeesController {
     return `This Action returns the specific coffee with id #${id}.`;
   }
   @Post()
-  create(@Body() body): string {
-    console.log(body);
+  create(@Body('name') name: string): string {
+    console.log(name);
     return 'This Action creates a new Coffee Object.';
   }
 }
