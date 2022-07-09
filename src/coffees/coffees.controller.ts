@@ -10,6 +10,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -27,8 +28,8 @@ export class CoffeesController {
 
   @Post()
   @HttpCode(HttpStatus.GONE)
-  create(@Body() body) {
-    return this.coffeesService.create(body);
+  create(@Body() createCofeeDto: CreateCoffeeDto) {
+    return this.coffeesService.create(createCofeeDto);
   }
 
   @Patch(':id')
