@@ -26,13 +26,21 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Body() createCofeeDto: CreateCoffeeDto) {
-    return this.coffeesService.create(createCofeeDto);
+  create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    console.log(createCoffeeDto instanceof CreateCoffeeDto);
+    /* By Default body params are not instance of DTO but by setting 
+      transform : true
+      in our ValidationPipe we can make it the instance of DTO 
+      as well as the path params can also be transformed to primitve data type number|boolean
+      which are by default string but this actually cost a bit in performance.
+    */
+    return this.coffeesService.create(createCoffeeDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
-    return this.coffeesService.update(id, updateCoffeeDto);
+  update(@Param('id') id: number, @Body() updateCoffeeDto: UpdateCoffeeDto) {
+    console.log(typeof id);
+    return this.coffeesService.update('' + id, updateCoffeeDto);
   }
 
   @Delete(':id')
