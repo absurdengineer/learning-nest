@@ -8,13 +8,14 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
   @Get()
-  findAll(): string {
-    return 'This Action returns all the coffees.';
+  findAll(@Query() query): string {
+    return `This Action returns ${query.limit} coffees on page #${query.page}.`;
   }
 
   @Get(':id')
