@@ -14,8 +14,8 @@ import {
 @Controller('coffees')
 export class CoffeesController {
   @Get()
-  findAll(@Query() query): string {
-    return `This Action returns ${query.limit} coffees on page #${query.page}.`;
+  findAll(@Query('page') page, @Query('limit') limit): string {
+    return `This Action returns ${limit} coffees on page #${page}.`;
   }
 
   @Get(':id')
