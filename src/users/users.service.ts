@@ -8,7 +8,7 @@ export class UsersService {
     @Inject(USERS_REPOSITORY) private usersRespository: typeof User,
   ) {}
 
-  async findAll() {
+  async findAll(): Promise<User[]> {
     return await this.usersRespository.findAll();
   }
 }
