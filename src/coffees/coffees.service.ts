@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { COFFEE_REPOSITORY } from 'src/core/constants';
 import { Coffee } from './coffee.entity';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Injectable()
 export class CoffeesService {
@@ -10,18 +12,21 @@ export class CoffeesService {
   ) {}
 
   async findAll() {
-    return [];
+    return await this.coffeesRepository.findAll();
   }
-  findOne(id: string) {
-    return '' + id;
+  async findOne(id: number) {
+    return await this.coffeesRepository.findOne({ where: { id } });
   }
-  create(createCoffeeDto: any) {
-    console.log('Action Invoked' + createCoffeeDto);
+  async create(createCoffeeDto: CreateCoffeeDto) {
+    await this.coffeesRepository.create({
+      ...createCoffeeDto,
+      flavors: createCoffeeDto.flavors.join(', '),
+    });
   }
-  update(id: string, updateCoffeeDto: any) {
-    console.log('Action Invoked' + updateCoffeeDto);
+  async update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
+    await this.coffeesRepository.update(updateCoffeeDto, { where: { id } });
   }
-  remove(id: string) {
-    console.log('Action Invoked' + id);
+  async remove(id: number) {
+    await this.coffeesRepository.destroy({ where: { id } });
   }
 }
