@@ -2,4 +2,4 @@ export const SEQUELIZE = 'SEQUELIZE';
 export const DEVELOPMENT = 'development';
 export const TEST = 'test';
 export const PRODUCTION = 'production';
-export const COFFEE_REPOSITORY = 'COFFEE_REPOSITORY';
+export const COFFEES_REPOSITORY = 'COFFEES_REPOSITORY';

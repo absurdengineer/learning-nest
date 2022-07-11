@@ -1,5 +1,5 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { COFFEE_REPOSITORY } from 'src/core/constants';
+import { COFFEES_REPOSITORY } from 'src/core/constants';
 import { Coffee } from './coffee.entity';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -7,7 +7,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 @Injectable()
 export class CoffeesService {
   constructor(
-    @Inject(COFFEE_REPOSITORY)
+    @Inject(COFFEES_REPOSITORY)
     private coffeesRepository: typeof Coffee,
   ) {}
 
