@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { User } from 'src/users/user.entity';
 import { Coffee } from '../../coffees/coffee.entity';
 import { DEVELOPMENT, PRODUCTION, SEQUELIZE, TEST } from '../constants';
 import { databaseConfig } from './database.config';
@@ -22,7 +23,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([Coffee]);
+      sequelize.addModels([Coffee, User]);
       await sequelize.sync();
       return sequelize;
     },
