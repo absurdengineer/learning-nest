@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Coffee } from 'src/coffees/coffee.entity';
 
 export const databaseProviders = [
   {
@@ -10,9 +11,9 @@ export const databaseProviders = [
         port: 3306,
         username: 'user',
         password: 'Password@123',
-        database: 'nest',
+        database: 'learning_nest',
       });
-      sequelize.addModels([]);
+      sequelize.addModels([Coffee]);
       await sequelize.sync();
       return sequelize;
     },
