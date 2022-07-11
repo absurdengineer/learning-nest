@@ -1,11 +1,11 @@
 export const databaseConfig = {
   development: {
-    dialect: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'user',
-    password: 'Password@123',
-    database: 'learning_nest',
+    dialect: process.env.DB_DIALECT,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME_DEVELOPMENT,
   },
   test: {
     dialect: '',
