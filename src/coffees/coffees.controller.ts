@@ -16,35 +16,35 @@ export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   @Get()
-  findAll() {
-    return this.coffeesService.findAll();
+  async findAll() {
+    const coffees = await this.coffeesService.findAll();
+    return { data: coffees, message: 'Coffees retrieved successfully.' };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.coffeesService.findOne(id);
+  async findOne(@Param('id') id: number) {
+    const coffee = await this.coffeesService.findOne(id);
+    return { data: coffee, message: 'Coffee retrieved successfully.' };
   }
 
   @Post()
-  create(@Body() createCoffeeDto: CreateCoffeeDto) {
-    console.log(createCoffeeDto instanceof CreateCoffeeDto);
-    /* By Default body params are not instance of DTO but by setting 
-      transform : true
-      in our ValidationPipe we can make it the instance of DTO 
-      as well as the path params can also be transformed to primitve data type number|boolean
-      which are by default string but this actually cost a bit in performance.
-    */
-    return this.coffeesService.create(createCoffeeDto);
+  async create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    const coffee = await this.coffeesService.create(createCoffeeDto);
+    return { data: coffee, message: 'Coffee created successfully.' };
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateCoffeeDto: UpdateCoffeeDto) {
-    console.log(typeof id);
-    return this.coffeesService.update(id, updateCoffeeDto);
+  async update(
+    @Param('id') id: number,
+    @Body() updateCoffeeDto: UpdateCoffeeDto,
+  ) {
+    await this.coffeesService.update(id, updateCoffeeDto);
+    return { data: updateCoffeeDto, message: 'Coffee updated successfully.' };
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.coffeesService.remove(id);
+  async remove(@Param('id') id: number) {
+    await this.coffeesService.remove(id);
+    return { message: 'Coffee removed successfully.' };
   }
 }
