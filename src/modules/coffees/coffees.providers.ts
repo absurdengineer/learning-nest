@@ -1,5 +1,5 @@
 import { Coffee } from './coffee.entity';
-import { COFFEES_REPOSITORY } from '../core/constants';
+import { COFFEES_REPOSITORY } from '../../core/constants';
 
 export const coffeesProviders = [
   {

@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
-import { User } from 'src/users/user.entity';
-import { Coffee } from '../../coffees/coffee.entity';
+import { User } from 'src/modules/users/user.entity';
+import { Coffee } from '../../modules/coffees/coffee.entity';
 import { DEVELOPMENT, PRODUCTION, SEQUELIZE, TEST } from '../constants';
 import { databaseConfig } from './database.config';
 

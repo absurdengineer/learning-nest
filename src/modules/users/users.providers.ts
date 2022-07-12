@@ -1,5 +1,5 @@
 import { User } from './user.entity';
-import { USERS_REPOSITORY } from '../core/constants';
+import { USERS_REPOSITORY } from '../../core/constants';
 
 export const usersProviders = [
   {
