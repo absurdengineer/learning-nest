@@ -6,7 +6,7 @@ import {
   BeforeUpdate,
 } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
-import * as bcrypt from 'bcrypt';
+import { encryptPassword } from 'src/common/encryption.helper';
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -28,10 +28,6 @@ export class User extends Model<User> {
   @BeforeCreate
   @BeforeUpdate
   static async hashPassword(user: User) {
-    if (user.password) {
-      const saltRounds = 11;
-      var salt = await bcrypt.genSalt(saltRounds);
-      user.password = await bcrypt.hash(user.password, salt);
-    }
+    if (user.password) user.password = await encryptPassword(user.password);
   }
 }
