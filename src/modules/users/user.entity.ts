@@ -4,10 +4,18 @@ import {
   Table,
   BeforeCreate,
   BeforeUpdate,
+  Scopes,
 } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { encryptPassword } from 'src/common/encryption.helper';
 
+@Scopes(() => ({
+  show: {
+    attributes: {
+      exclude: ['password'],
+    },
+  },
+}))
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
   @Column({ type: DataTypes.STRING, allowNull: false })

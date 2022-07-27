@@ -10,7 +10,7 @@ export class UsersService {
   ) {}
 
   async findAll(): Promise<User[]> {
-    return await this.usersRespository.findAll();
+    return await this.usersRespository.scope('show').findAll();
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
