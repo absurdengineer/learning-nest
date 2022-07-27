@@ -13,6 +13,10 @@ export class UsersService {
     return await this.usersRespository.scope('show').findAll();
   }
 
+  async findOne(id: number): Promise<User> {
+    return await this.usersRespository.findByPk(id);
+  }
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     return await this.usersRespository.create(createUserDto);
   }
